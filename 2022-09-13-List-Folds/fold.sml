@@ -50,7 +50,7 @@ fun reverse x = foldl rhelp [] x
 
 (**)
 
-datatype 'a option = SOME of 'a | NONE;
+datatype 'a option = SOME of 'a | NONE
 
 datatype 'a Find = LookingFor of int
                  | Found      of 'a
@@ -66,7 +66,7 @@ fun nthAux (x, y) = let
                                                          LookingFor (v - 1)
                     in
                         foldl help (LookingFor y) x
-                    end;
+                    end 
 
 (* val nth = fn : 'a list * int -> 'a option *)
 
