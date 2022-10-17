@@ -25,7 +25,7 @@ fun subst (Var z) y x 	      = if Atom.same(y,z) then x else (Var z)
 ;
 (*Q4*)
 (*using diagonalising argument*)
-fun diagA (y,x) =
+fun diagA x y =
 		      let 
 	  			val b = String.explode x
 	   			val e = String.implode (b @ [#"a"])
@@ -36,7 +36,9 @@ fun diagA (y,x) =
 		      end
 ;
 
-fun fresh a = Atom.atom(AtomSet.foldl diagA "" a)
+fun helper (x,y) = diagA y x
+
+fun fresh a = Atom.atom(AtomSet.foldl helper "" a)
 ;
 
 val x = AtomSet.fromList([Atom.atom("a"),Atom.atom("aa"),Atom.atom("ca")]);
